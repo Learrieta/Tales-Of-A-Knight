@@ -10,7 +10,7 @@ The main reason I wanted to create this game is for me to gain a deeper understa
 
 
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://www.youtube.com/watch?v=_aGx0dktsB8)
 
 # Game Engine
 The game is done inside of the Unity software.
