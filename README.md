@@ -6,7 +6,7 @@ of challenges and levels to rescue the princess.
 The game is mostly done in unity, where you can set up the background, character, colors, levels and animation. The scripting for the characters
 and animations to behave was done in c# using built-in methods provided by unity as well as classes.
 
-The main reason I wanted to create this game is for me to gain a deeper understanding of C# and the various libraries and components I can utilize.
+The main reason I wanted to create this game is to gain a deeper understanding of C# and the various libraries and components I can utilize.
 
 
 
