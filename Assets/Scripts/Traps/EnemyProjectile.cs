@@ -24,7 +24,8 @@ public class EnemyProjectile : EnemyDamage
      }
      private void OnTriggerEnter2D(Collider2D collision) 
      {
-        
+        base.OnTriggerEnter2D(collision); //Execute logic from parent script first
+        gameObject.SetActive(false); //When it hits any objects it deactivates arrow
      }
 
 
