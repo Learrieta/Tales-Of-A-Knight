@@ -6010,7 +6010,7 @@ Transform:
   - {fileID: 1880447874}
   - {fileID: 1326045318}
   m_Father: {fileID: 1948508865}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 1.154, y: 0, z: -90}
 --- !u!114 &614882785
 MonoBehaviour:
@@ -8173,7 +8173,7 @@ GameObject:
   - component: {fileID: 779704087}
   m_Layer: 0
   m_Name: 'Checkpoint '
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8191,7 +8191,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1948508865}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &779704087
 Animator:
@@ -9982,6 +9982,7 @@ GameObject:
   - component: {fileID: 949303777}
   - component: {fileID: 949303779}
   - component: {fileID: 949303780}
+  - component: {fileID: 949303781}
   - component: {fileID: 949303778}
   m_Layer: 10
   m_Name: Player
@@ -10189,6 +10190,19 @@ MonoBehaviour:
   numberOfFlashes: 3
   deathSound: {fileID: 8300000, guid: 96c33ab7d93aa5f44b4d767f3849b510, type: 3}
   HealthSound: {fileID: 8300000, guid: 6a647e7adfec3b2438e26c062f2c13a6, type: 3}
+--- !u!114 &949303781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949303772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42b6f43bd7bb49e41851663368f1cbc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkpointSound: {fileID: 8300000, guid: 096c4820690ff90458b3f52161897dfd, type: 3}
 --- !u!1 &954676750
 GameObject:
   m_ObjectHideFlags: 0
@@ -19122,12 +19136,12 @@ Transform:
   - {fileID: 556910073}
   - {fileID: 738592802}
   - {fileID: 1160149768}
+  - {fileID: 614882784}
   - {fileID: 734243856}
   - {fileID: 1382147354}
-  - {fileID: 614882784}
   - {fileID: 213290799}
-  - {fileID: 1094682977}
   - {fileID: 779704086}
+  - {fileID: 1094682977}
   m_Father: {fileID: 2065978051}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
