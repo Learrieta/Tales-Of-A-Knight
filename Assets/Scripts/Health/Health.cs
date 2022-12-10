@@ -17,6 +17,13 @@ public class Health : MonoBehaviour
     [SerializeField]private float numberOfFlashes;
     private SpriteRenderer spriteRend;
 
+    [Header("Death sound")]
+    [SerializeField]private AudioClip deathSound;
+
+    [Header("Health sound")]
+    [SerializeField]private AudioClip HealthSound;
+    
+
     private void Awake() {
         currentHealth = startHealth;
         anim = GetComponent<Animator>();
@@ -32,12 +39,13 @@ public class Health : MonoBehaviour
         {
             anim.SetTrigger("hurt");
             StartCoroutine(Invulnerability());
+            SoundManager.instance.Playsound(HealthSound);
         }
         else
         {
             if(!death)
             {
-                anim.SetTrigger("die");
+                
 
                 if(GetComponent<PlayerMovement>() != null)
                     GetComponent<PlayerMovement>().enabled = false;
@@ -50,10 +58,12 @@ public class Health : MonoBehaviour
 
                 if(GetComponent<MeleeEnemy>() != null)
                     GetComponent<MeleeEnemy>().enabled = false;
+                
+                anim.SetBool("grounded", true);
+                anim.SetTrigger("die");
 
-
-            
                 death = true;
+                SoundManager.instance.Playsound(deathSound);
 
             }
             
@@ -63,6 +73,27 @@ public class Health : MonoBehaviour
     public void AddHealth(float _value)
     {
         currentHealth = Mathf.Clamp(currentHealth + _value, 0 ,startHealth);
+    }
+
+    public void Respawn()
+    {
+        death = false;
+        AddHealth(startHealth);
+        anim.ResetTrigger("die");
+        anim.Play("Idle");
+        StartCoroutine(Invulnerability());
+        if(GetComponent<PlayerMovement>() != null)
+            GetComponent<PlayerMovement>().enabled = true;
+
+                
+        //Enemy
+        if( GetComponentInParent<EnemyPatrol>() != null)
+            GetComponentInParent<EnemyPatrol>().enabled = true;
+
+
+        if(GetComponent<MeleeEnemy>() != null)
+            GetComponent<MeleeEnemy>().enabled = true;
+
     }
 
     private IEnumerator Invulnerability()
@@ -79,6 +110,11 @@ public class Health : MonoBehaviour
 
         Physics2D.IgnoreLayerCollision(10, 11, false);
         invulnerable = false;
+    }
+
+    private void Deactivate()
+    {
+        gameObject.SetActive(false);
     }
     
    

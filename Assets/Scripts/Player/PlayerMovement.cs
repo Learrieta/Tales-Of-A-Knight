@@ -16,10 +16,13 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private Rigidbody2D body;
 
-    private float wallJumpCooldown;
+   
     
 
     private BoxCollider2D boxCollider;
+
+    [Header("Jump sound")]
+    [SerializeField]private AudioClip jumpSound;
 
     private void Awake(){
 
@@ -48,29 +51,24 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("grounded", isGrounded() );
 
 
-
-        if(wallJumpCooldown > 0.2f)
-        {
-            
-        
-            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
-
-            if(onWall() && !isGrounded())
-            {
-                body.gravityScale = 0;
-                body.velocity = Vector2.zero;
-            }
-            else 
-                body.gravityScale = 7;
-
-
-            if(Input.GetKey(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space))
             Jump();
-            
-
+        
+        if(Input.GetKeyUp(KeyCode.Space) && body.velocity.y > 0)
+            body.velocity = new Vector2(body.velocity.x, body.velocity.y /2);
+        
+        if(onWall())
+        {
+            body.gravityScale = 0;
+            body.velocity = Vector2.zero;
         }
         else
-            wallJumpCooldown += Time.deltaTime;
+        {
+            body.gravityScale = 7;
+            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+        }
+
+       
 
         
         
@@ -80,8 +78,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if(isGrounded())
         {
+            
             body.velocity = new Vector2(body.velocity.x, jumpPower);
-            anim.SetTrigger("jump");
+            SoundManager.instance.Playsound(jumpSound);
         }
         else if( onWall() && !isGrounded())
         {
@@ -94,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
                 body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 3, 6);
 
 
-            wallJumpCooldown = 0;
+            
 
         }
         

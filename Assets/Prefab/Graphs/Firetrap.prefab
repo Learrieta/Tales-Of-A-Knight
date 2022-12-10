@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 323a59e6fb584e4419903dea26b6d0f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activationDelay: 1
-  activeTime: 1
+  activationDelay: 0.25
+  activeTime: 2
   damages: 1
 --- !u!61 &8514125106512972218
 BoxCollider2D:

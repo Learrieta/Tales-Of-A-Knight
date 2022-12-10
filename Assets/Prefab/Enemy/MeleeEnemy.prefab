@@ -146,9 +146,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b4c15dd8ecd20f41b6610027c1ca75a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 3
+  startHealth: 6
   iFramesDuration: 0
   numberOfFlashes: 0
+  deathSound: {fileID: 0}
+  HealthSound: {fileID: 0}
 --- !u!114 &7339148206235361037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,3 +171,4 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
+  attackSound: {fileID: 0}
