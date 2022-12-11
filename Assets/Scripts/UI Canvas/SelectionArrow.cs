@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SelectionArrow : MonoBehaviour
 {
@@ -14,10 +15,23 @@ public class SelectionArrow : MonoBehaviour
     rect = GetComponent<RectTransform>();
   }
   private void Update() {
+    //Change positions
     if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
       ChangePosition(-1);
     else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
       ChangePosition(1);
+
+    //Interact with options
+    if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.E))
+      Interact();
+  }
+
+  private void Interact()
+  {
+    SoundManager.instance.Playsound(interactSound);
+
+    options[currentPosition].GetComponent<Button>().onClick.Invoke();
+
   }
   private void ChangePosition(int _change)
   {

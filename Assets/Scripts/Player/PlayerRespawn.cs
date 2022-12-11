@@ -20,11 +20,12 @@ public class PlayerRespawn : MonoBehaviour
         if(currentCheckpoint == null)
         {
             uiManager.GameOver();
-            return;///
+            return;
         }
         
-        transform.position = currentCheckpoint.position;  
         playerHealth.Respawn();
+        transform.position = currentCheckpoint.position;  
+        
         Camera.main.GetComponent<CameraController>().MoveToNewRoom(currentCheckpoint.parent);
     }
 
